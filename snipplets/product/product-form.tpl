@@ -148,7 +148,7 @@
             {% include "snipplets/product/product-quantity.tpl" %}
         {% endif %}
         {% set state = store.is_catalog ? 'catalog' : (product.available ? product.display_price ? 'cart' : 'contact' : 'nostock') %}
-        {% set texts = {'cart': "Agregar al carrito", 'contact': "Consultar precio", 'nostock': "Sin stock", 'catalog': "Consultar"} %}
+        {% set texts = {'cart': "Agregar al carrito", 'contact': "Solicitar Producto", 'nostock': "Sin stock", 'catalog': "Consultar"} %}
         <div class="col-8 pr-0">
 
             {# Add to cart CTA #}

@@ -840,7 +840,7 @@ DOMContentLoaded.addEventOrExecute(() => {
                 prevEl: '.js-swiper-brands-prev',
             },
             breakpoints: {
-                640: {
+                0: {
                     slidesPerView: 5,
                 }
             }
@@ -1474,7 +1474,7 @@ DOMContentLoaded.addEventOrExecute(() => {
 	    if ((button.hasClass('contact')) || (button.hasClass('catalog'))) {
 	        e.preventDefault();
 	        var product_id = jQueryNuvem(e.currentTarget).find("input[name='add_to_cart']").val();
-	        window.location = "{{ store.contact_url | escape('js') }}?product=" + product_id;
+	        window.location = "https://wa.me/573185556767";
 	    } else if (button.hasClass('cart')) {
 	        button.val('{{ "Agregando..." | translate }}');
 	    }
@@ -2311,7 +2311,7 @@ DOMContentLoaded.addEventOrExecute(() => {
                 prevEl: '.js-swiper-brands-prev',
             },
             breakpoints: {
-                640: {
+                0: {
                     slidesPerView: 5,
                 }
             }

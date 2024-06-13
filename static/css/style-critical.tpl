@@ -330,11 +330,18 @@ body{
   position: fixed;
   bottom: 10px;
   right: 10px;
-  z-index: 100;
+  z-index: 102;
   color: white;
   background-color:#4dc247;
   box-shadow: 2px 2px 6px rgba(0,0,0,0.4);
   border-radius: 50%;
+}
+
+
+@media screen and (max-width: 768px) {
+  .btn-whatsapp {
+  bottom: 11vh;
+}
 }
 
 .btn-whatsapp svg{

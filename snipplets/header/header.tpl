@@ -42,6 +42,9 @@
                     <a href="#" class="js-modal-open utilities-link utilities-item" data-toggle="#nav-hamburger" aria-label="{{ 'Menú' | translate }}" data-component="menu-button">
                         <svg class="icon-inline icon-2x icon-w-14"><use xlink:href="#bars"/></svg>
                     </a>
+                    <a href="https://www.beethovenpetcare.com/" style="font-size:2em;">
+                        <ion-icon name="home"></ion-icon>
+                    </a>
                     {% if store.country == 'AR'%}
                         {# Notification icon for quick login on AR stores #}
                         <div class="js-quick-login-badge badge badge-overlap swing" style="display: none;"></div>

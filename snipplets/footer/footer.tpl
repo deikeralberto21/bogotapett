@@ -10,7 +10,7 @@
 
 {% set has_seal_logos = store.afip or ebit or settings.custom_seal_code or ("seal_img.jpg" | has_custom_image) %}
 {% set show_help = not has_products and not has_social_network %}
-<footer class="js-hide-footer-while-scrolling display-when-content-ready" data-store="footer">
+<footer style='margin-top:0;' class="js-hide-footer-while-scrolling display-when-content-ready" data-store="footer">
 	<div class="container-fluid px-md-5">
 		<div class="row element-footer">
 			
@@ -31,14 +31,7 @@
 				{% endif %}
 
 				{# Foot Nav #}
-				{% if has_footer_menu %}
-					<div class="col">
-						{% if settings.footer_menu_title %}
-							<h4 class="h3">{{ settings.footer_menu_title }}</h4>
-						{% endif %}
-						{% include "snipplets/navigation/navigation-foot.tpl" %}
-					</div>
-				{% endif %}
+				
 
 				{# Foot Nav Secondary #}
 				{% if has_footer_menu_secondary %}
@@ -81,18 +74,21 @@
 
 					{# Social icons that work as examples #}
 					<a class="social-icon-rounded">
-						<svg class="icon-inline icon-lg"><use xlink:href="#facebook-f"/></svg>
+						{% include "snipplets/svg/facebook-f.tpl" with {svg_custom_class: "icon-inline icon-lg"} %}
 					</a>
 					<a class="social-icon-rounded">
-						<svg class="icon-inline icon-lg"><use xlink:href="#instagram"/></svg>
+						{% include "snipplets/svg/instagram.tpl" with {svg_custom_class: "icon-inline icon-lg"} %}
 					</a>
 					<a class="social-icon-rounded">
-						<svg class="icon-inline icon-lg"><use xlink:href="#twitter"/></svg>
+						{% include "snipplets/svg/twitter.tpl" with {svg_custom_class: "icon-inline icon-lg"} %}
 			        </a>
 				</div>
 
 			{% endif %}
 
+		<div class="row element-footer">
+			<img class='imgFott' src="{{ 'images/acces/bann3r.png' | static_url }}">
+		</div>
 		</div>
 
 		{% if template != 'password' %}
@@ -150,8 +146,7 @@
 			                            {% if settings.seal_url != '' %}
 			                                <a href="{{ settings.seal_url | setting_url }}" target="_blank">
 			                            {% endif %}
-			                            	{% set seal_image = "seal_img.jpg" | static_url %}
-			                                <img src="{{ 'images/empty-placeholder.png' | static_url }}" data-src="{{ seal_image | settings_image_url('large') }}" class="custom-seal-img lazyload" alt="{{ 'Sello de' | translate }} {{ store.name }}" />
+			                                <img src="{{ 'images/empty-placeholder.png' | static_url }}" data-src="{{ "seal_img.jpg" | static_url }}" class="custom-seal-img lazyload" alt="{{ 'Sello de' | translate }} {{ store.name }}" />
 			                            {% if settings.seal_url != '' %}
 			                                </a>
 			                            {% endif %}
@@ -171,25 +166,25 @@
 			{% endif %}
 
 		{% endif %}
+
 	</div>
-	<div class="js-footer-legal footer-legal">
-		<div class="container-fluid px-md-5">
+	<div class="footer-legal">
+		<div class="footer_content">
+			<img style="width: 30%" src="{{ 'images/acces/method.png' | static_url }}">
+		</div>
+		<!-- <div class="container-fluid px-md-5">
 			<div class="row">
 
 	            <div class="col-md-9 text-md-left mb-3 mb-md-0">
 	                <div class="d-inline-block mr-md-2">
 	                   {{ "Copyright {1} - {2}. Todos los derechos reservados." | translate( (store.business_name ? store.business_name : store.name) ~ (store.business_id ? ' - ' ~ store.business_id : ''), "now" | date('Y') ) }}
 	                </div>
-	                {{ component('claim-info', {
-							container_classes: "d-md-inline-block mt-md-0 mt-3",
-							divider_classes: "mx-1",
-							text_classes: {text_consumer_defense: 'd-inline-block mb-1'},
-							link_classes: {
-								link_consumer_defense: "font-weight-bold",
-								link_order_cancellation: "font-weight-bold",
-							},
-						}) 
-					}}
+	                {% if store.country == 'AR' %}
+	                    <div class="claim-link d-md-inline-block mt-md-0 mt-3">
+	                       {{ "Defensa de las y los consumidores. Para reclamos" | translate }}
+	                       <a class="font-weight-bold" href="https://www.argentina.gob.ar/produccion/defensadelconsumidor/formulario" target="_blank">{{ "ingrese aquí" | translate }}</a>
+	                    </div>
+	                {% endif %}
 	            </div>
 
 				<div class="col-md text-left text-md-right">
@@ -209,6 +204,6 @@
 	            </div>
 	            
 	        </div>
-    	</div>
+    	</div> -->
     </div>
 </footer>

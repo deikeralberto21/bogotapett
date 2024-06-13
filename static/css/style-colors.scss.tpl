@@ -16,6 +16,10 @@ style.scss.tpl
     // SVG Icons
     // Texts
     // Backgrounds 
+  #Pop Ups
+    // Cat or Dog Pop Up
+    // WhatsApp Pop Up
+    // Beethoven App Pop Up
   #Components
     // Margin and Padding
     // Mixins
@@ -47,6 +51,8 @@ style.scss.tpl
     // Newsletter
     // Brands
   #Product grid
+    // Navigation buttons
+    // Brand Carousel
     // Category controls
     // Grid item
     // Labels
@@ -61,6 +67,7 @@ style.scss.tpl
     // Utilities
     // Search
     // Nav
+    // Nav Bottom
   #Footer
     // Copyright
   #Media queries
@@ -151,8 +158,7 @@ $body-font: {{ settings.font_rest | raw }};
   color: $main-background;
 }
 
-.text-accent,
-.cart-installments.installment-no-interest {
+.text-accent {
   color: $accent-color;
 }
 
@@ -168,6 +174,135 @@ $body-font: {{ settings.font_rest | raw }};
 
 .background-main{
   background-color: $main-background;
+}
+
+
+{#/*============================================================================
+  #Pop Ups
+==============================================================================*/#}
+
+{# /* // Cat or Dog Pop Up */ #}
+
+.ad {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 250px;
+  height: auto;
+  background-color: $main-background;
+  border-radius: 10%;
+  border: 4px solid $main-foreground;
+  padding: 25px 10px 10px 10px;
+  z-index: 9999;
+  text-align: center;
+}
+
+.ad h2 {
+  font-size: 18px;
+}
+
+.ad.show {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ad div {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.ad .close-btn {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.ad button {
+  border: 1px solid $primary-color;
+  border-radius: 10px;
+  padding: 7px 20px;
+  transition: all 300ms;
+  background: $primary-color;
+  color: $main-background;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.ad button:hover {
+  font-size: 16px;
+  padding: 5px 15px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9998;
+  opacity: 0;
+  display:none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.overlay.show {
+  opacity: 1;
+  display: block;
+}
+
+{# /* // WhatsApp Pop Up */ #}
+
+.whatsAppMessage {
+  position: fixed;
+  top: auto;
+  left: auto;
+  bottom: 16px;
+  right: -111px;
+  z-index: 9997;
+  width: 240px;
+  height: auto;
+  border: 2px solid $main-foreground;
+  border-radius: 45px;
+  padding: 10px;
+  transition: all 0.4s ease;
+
+  p { 
+    flex: 1;
+    line-height: 16px; 
+    margin-bottom: 0;
+    width: 80%;
+    align-self: center;
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+}
+
+{# /* // Beethoven App Pop Up */ #}
+
+.appMessage {
+  cursor: pointer;
+  position: fixed;
+  top: 280px;
+  left: auto;
+  right: -80px;
+  z-index: 100;
+  border: 4px solid $main-foreground;
+  padding: 0;
+  height: 100px;
+  width: 177px;
+  z-index: 9997;
+
+  h2 {
+    margin-top: 20px;
+  }
 }
 
 {#/*============================================================================
@@ -272,7 +407,6 @@ $body-font: {{ settings.font_rest | raw }};
 
 body{
   color: $main-foreground;
-  fill: $main-foreground;
   font-family: $body-font;
   background-color:$main-background;
   @extend %body-font;
@@ -681,16 +815,16 @@ textarea {
 }
 
 .form-control::-webkit-input-placeholder { 
-  color: rgba($main-foreground, .3);
+  color: rgba($main-foreground, .5);
 }
 .form-control:-moz-placeholder {
-  color: rgba($main-foreground, .3);
+  color: rgba($main-foreground, .5);
 }
 .form-control::-moz-placeholder {
-  color: rgba($main-foreground, .3);
+  color: rgba($main-foreground, .5);
 }
 .form-control:-ms-input-placeholder {
-  color: rgba($main-foreground, .3);
+  color: rgba($main-foreground, .5);
 }
 
 .form-control,
@@ -990,6 +1124,12 @@ input::-webkit-outer-spin-button{
   }
 }
 
+.brands-page-image {
+  width: 20%;
+  padding: 10px;
+  position: relative;
+}
+
 {# /* // Tables */ #}
 
 .table{
@@ -1036,7 +1176,6 @@ input::-webkit-outer-spin-button{
 }
 
 {# /* // Sliders */ #}
-
 .swiper-text {
   @extend %simplefade;
   opacity: 0;
@@ -1196,6 +1335,110 @@ input::-webkit-outer-spin-button{
   #Product grid
 ==============================================================================*/#}
 
+{# /* // Navigation buttons */ #}
+
+.nav-buttons-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .list {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .listRow {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .svg-image {
+    width: 15px;
+    height: 15px;
+    margin-right: 8px;
+    fill: rgb(255, 255, 255);
+  }
+}
+
+
+.navButton {
+  text-align: center;
+  border-radius: 10px;
+  background-color: $primary-color;
+  color: white;
+  padding: 10px;
+  font-size: 15px;
+  border: none;
+  text-decoration: none;
+  min-width: 90px;
+  font-weight: bold;
+  margin: 3px 7px;
+}
+
+{# /* // Brand Carousel  */ #}
+
+.brand-carousel-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  background-color: rgba(230,126,34,0.1);
+  min-height: 120px;
+  border-bottom: 40px solid rgba(230,126,34,0.0);
+
+  .carousel-left-btn, .carousel-right-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    border: 2px solid #fdcc03;
+    border-radius: 50%;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fdcc03;
+    cursor: pointer;
+    width: 25px;
+    height: 30px;
+    padding: 1px 0px 0px 0px;
+  }
+
+  .carousel-left-btn {
+    left: 0;
+  }
+  
+  .carousel-right-btn {
+    right: 0;
+  }
+}
+
+.brand-carousel {
+  position: relative;
+  width: 85%;
+  min-height: 65px;
+  overflow: hidden;
+  
+  .brands {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    align-items: center;
+  }
+
+  img {
+    width: 18%;
+    margin: 0 1%;
+    object-fit: contain;
+    border-radius: 50%
+  }
+}
+
 {# /* // Category controls */ #}
 
 .category-controls {
@@ -1245,6 +1488,9 @@ input::-webkit-outer-spin-button{
 .label {
   background: $main-foreground;
   color: $main-background;
+  font-size: 11px;
+  padding: 4px;
+
   &.label-primary{
     background: $primary-color;
     color: $main-background;
@@ -1292,11 +1538,6 @@ input::-webkit-outer-spin-button{
 }
 
 {# /* // Form and info */ #}
-
-.product-detail-installments .installment-no-interest {
-  color: $accent-color;
-  font-weight: bold;
-}
     
 .social-share {
   @extend %element-margin;
@@ -1440,6 +1681,23 @@ input::-webkit-outer-spin-button{
   .badge {
     color: $main-background;
     background: $primary-color;
+  }
+}
+
+.nav-desktop-list {
+  .svg-image {
+    width: 25px;
+    height: 25px;
+    margin-bottom: -5px;
+    fill: rgb(255, 255, 255);
+  }
+}
+
+.nav-list {
+  .svg-image {
+    width: 25px;
+    height: 25px;
+    margin: 10px -10px 0 5px;
   }
 }
 
@@ -1673,6 +1931,37 @@ input::-webkit-outer-spin-button{
 }
 
 
+{# /* // Nav Bottom */ #}
+
+.nav-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: $primary-color;
+  display: flex;
+  justify-content: space-evenly;
+  z-index: 9998;
+  cursor: pointer;
+
+  &-section {
+    display: flex;
+    flex-direction: column;
+    max-width: 100px;
+    align-items: center;
+    margin: auto;
+  }
+
+  .svg-image {
+    width: 25px;
+    height: 25px;
+    fill: rgb(255, 255, 255);
+  }
+}
+
+
+
 {#/*============================================================================
   #Footer
 ==============================================================================*/#}
@@ -1739,6 +2028,10 @@ footer {
   }
 }
 
+.row {
+  justify-content: space-evenly;
+}
+
 {#/*============================================================================
   #Media queries
 ==============================================================================*/ #}
@@ -1746,6 +2039,46 @@ footer {
 {# /* // Min width 768px */ #}
 
 @media (min-width: 768px) { 
+
+  .brand-carousel-container {
+    min-height: 315px;
+    padding: 15px 0;
+
+    .navButton {
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50px);
+    }
+  }
+
+  .brand-carousel {
+    img {
+      width: 14.666666%;
+    }
+
+    h3 {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .carousel-left-btn, .carousel-right-btn {
+    border: 4px solid #fdcc03 !important;
+    font-size: 60px !important;
+    width: 60px !important;
+    height: 60px !important;
+    padding: 0 !important;
+    padding-top: 10px !important;
+  }
+
+  .carousel-left-btn {
+    left: 15px !important;
+  }
+  
+  .carousel-right-btn {
+    right: 15px !important;
+  }
 
   {# /* //// Components */ #}
 
@@ -1755,11 +2088,6 @@ footer {
   .form-select,
   .form-quantity{
     font-size: 14px;
-  }
-
-  .btn-extra-small-md {
-    padding: 10px;
-    font-size: 10px;
   }
 
   {# /* Modals */ #}
@@ -1816,4 +2144,56 @@ footer {
     }
   }
 
+}
+
+{# /* // Max width 767px */ #}
+
+@media (max-width: 767px) {
+  .section-banners-home { 
+    .row { 
+      justify-content: center; 
+
+      .col-md-4 { width: 50% }
+    } 
+  }
+
+  .whatsAppMessage {
+    bottom: 55px;
+  }
+
+  .h1 {
+    line-height: 40px;
+    padding: 30px 0;
+  }
+
+  .brand-carousel-container {
+    h3 {
+      display: flex;
+      justify-content: center;
+      font-size: 20px;
+      line-height: 1;
+      padding: 0;
+      margin: 10px 0;
+    }
+
+    .navButton {
+      position: absolute;
+      bottom: -36px;
+      left: 50%;
+      transform: translateX(-50px);
+      font-size: 15px !important;
+      padding: 5px;
+    }
+  }
+
+  .brands-page-image {
+    width: 33.333333%;
+    padding: 5px;
+
+    span {
+      padding: 0;
+      line-height: 0;
+      font-size: 25px;
+    }
+  }
 }

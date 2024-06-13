@@ -19,7 +19,7 @@
 <div class="{% if product.video_url and product %}js-labels-group{% endif %} labels {% if product_detail and has_multiple_slides %}labels-product-slider{% endif %}" data-store="product-item-labels">
   {% if show_labels %}
     {% if not product.has_stock %}
-      <div class="{% if product_detail or color %}js-stock-label {% endif %}label label-default">{{ "Sin stock" | translate }}</div>
+      <div class="{% if product_detail or color %}js-stock-label {% endif %}label label-default">{{ "Validar stock" | translate }}</div>
     {% else %}
       {% if product_detail or color %}
         <div class="js-stock-label label label-default" {% if product.has_stock %}style="display:none;"{% endif %}>{{ "Sin stock" | translate }}</div>

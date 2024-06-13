@@ -828,7 +828,7 @@ $(document).ready(function(){
                 prevEl: '.js-swiper-brands-prev',
             },
             breakpoints: {
-                640: {
+                0: {
                     slidesPerView: 5,
                 }
             }
@@ -1464,7 +1464,7 @@ $(document).ready(function(){
 	    if ((button.hasClass('contact')) || (button.hasClass('catalog'))) {
 	        e.preventDefault();
 	        var product_id = $(this).find("input[name='add_to_cart']").val();
-	        window.location = "{{ store.contact_url | escape('js') }}?product=" + product_id;
+	        window.location = "https://wa.me/573185556767";
 	    } else if (button.hasClass('cart')) {
 	        button.val('{{ "Agregando..." | translate }}');
 	    }
@@ -2276,7 +2276,7 @@ $(document).ready(function(){
                 prevEl: '.js-swiper-brands-prev',
             },
             breakpoints: {
-                640: {
+                0: {
                     slidesPerView: 5,
                 }
             }

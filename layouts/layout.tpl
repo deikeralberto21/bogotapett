@@ -88,9 +88,85 @@
 
         {{ component('structured-data') }}
 
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </head>
     <body class="{% if settings.head_fix %}js-head-offset head-offset{% endif %} {% if customer %}customer-logged-in{% endif %} template-{{ template | replace('.', '-') }}" data-rounded-borders="{{ settings.theme_rounded ? 'true' : 'false' }}" data-solid-icons="{{ settings.icons_solid ? 'true' : 'false' }}">
+<!-- mensaje pop up -->
+    
+    <div class="navmobiloContainer">
+  <div class="navMObilo" style="position: relative;/*! top: 0; *//*! background-color: aqua; */height: 100%;width: 100%;display: flex;align-items: center;justify-content: space-evenly;list-style: none;color: white;margin: 0;">
+    
+  <a href="https://beethovenpetcare.com/alimentos3">
+    {% if page_title == 'ALIMENTOS' %}
+    <div class='itemNavMenu activeitem'>
+    <ion-icon class="ion activeitem" name="fast-food"></ion-icon>
+    
+    {% else %}
+    <div class='itemNavMenu'>
+      <ion-icon class="ion" name="fast-food"></ion-icon>
 
+    {% endif %}
+      Alimentos
+      </div>
+  </a>
+  <a href="https://beethovenpetcare.com/accesorios11">
+    {% if page_title == 'ACCESORIOS1' %}
+    <div class='itemNavMenu activeitem'>
+    <ion-icon class="ion activeitem" name="glasses"></ion-icon>
+    
+    {% else %}
+    <div class='itemNavMenu'>
+      <ion-icon class="ion" name="glasses"></ion-icon>
+
+    {% endif %}
+      Accesorios
+      </div>
+  </a>
+  <a href="https://beethovenpetcare.com/higiene-principal/">
+    
+    {% if page_title == 'HIGIENE (principal)' %}
+    <div class='itemNavMenu activeitem'>
+    <ion-icon class="ion activeitem" name="cut"></ion-icon>
+    
+    {% else %}
+    <div class='itemNavMenu'>
+      <ion-icon class="ion" name="cut"></ion-icon>
+
+    {% endif %}
+      Higiene
+      </div>
+  </a>
+  <a href="https://beethovenpetcare.com/farmacia11">
+    
+    {% if page_title == 'FARMACIA1' %}
+    <div class='itemNavMenu activeitem'>
+    <ion-icon class="ion activeitem" name="bandage"></ion-icon>
+    
+    {% else %}
+    <div class='itemNavMenu'>
+      <ion-icon class="ion" name="bandage"></ion-icon>
+
+    {% endif %}
+      Farmacia
+      </div>
+  </a>
+  <a href="https://beethovenpetcare.com/marcas1">
+    
+    {% if page_title == 'MARCAS' %}
+    <div class='itemNavMenu activeitem'>
+    <ion-icon class="ion activeitem" name="rocket-sharp"></ion-icon>
+    
+    {% else %}
+    <div class='itemNavMenu'>
+      <ion-icon class="ion" name="rocket-sharp"></ion-icon>
+
+    {% endif %}
+      Marcas
+      </div>
+  </a>
+  </div>
+</div>
         {# Theme icons #}
 
         {% include "snipplets/svg/icons.tpl" %}
@@ -206,6 +282,46 @@
         {# Store external codes added from admin #}
 
         {{ component('assorted-js', {}) }}
-
+{% if page_title == 'Tienda Online de BEETHOVEN PET CARE' %}
+        <div id="containerUbicaction" class="containerUbicaction">
+            <div  id="containermsj" class="mensajeContenedor">
+                <div class="containermsjcontent">
+                    
+                    <div>
+                        <ion-icon name="map-outline"></ion-icon>
+                        <h2>SELECCIONE SU UBICACIÓN </h2>
+                    </div>
+                    <div>
+                        <button id="closemsj" style="outline:none; padding: 10px 25px;border:none;border-radius:15px;color:white;font-style:bold;text-align:center;background:#fdcc03;">BOGOTA</button>
+                        <a href="https://beethovenvillavo.com/"><button style="outline:none; padding: 10px 25px;border:none;border-radius:15px;color:white;font-style:bold;text-align:center;background:#fdcc03;">VILLAVO</button></a>
+                    </div>
+                </div>
+            </div> 
+        </div>
+            <div class="container__popup" id="popupContainer">
+                <div class="content__popup" id="popupContent">
+                    <div class="closenav"> 
+                        <ion-icon  id="closePopup" name="close-outline"></ion-icon></div>
+                    <p> ¿Tienes alguna duda? ¿No encuentras lo que buscas? ¡Escríbenos Te ayudaremos con gusto.</p>
+                </div>
+            </div>
+            <script>
+                let closeBtn = document.getElementById('closePopup');
+                let popupContent = document.getElementById('popupContent');
+                let popupContainer = document.getElementById('popupContainer');
+                closeBtn.addEventListener('click',()=>{
+                    popupContainer.style.display='none';
+                    popupContent.style.display='none';
+                })
+                let closemsj = document.getElementById('closemsj');
+                let msj = document.getElementById('containermsj');
+                let msjcontainer = document.getElementById('containerUbicaction');
+                closemsj.addEventListener('click',()=>{
+                    msj.style.display='none';
+                    msjcontainer.style.display='none';
+                })
+            </script>
+        {% endif %}
+    
     </body>
 </html>
